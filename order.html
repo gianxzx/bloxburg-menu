@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Order | Amour Angélique Bakery</title>
+    <link rel="icon" type="image/png" href="https://cur.cursors-4u.net/food/foo-1/foo3.png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --hot-pink: #698ae8; --mid-pink: #698ae8; --soft-pink: #f0f5ff; --white: #ffffff; }
+        body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: var(--white); background-image: radial-gradient(var(--mid-pink) 0.5px, transparent 0.5px); background-size: 30px 30px; }
+        .main-nav { background: white; padding: 20px; display: flex; justify-content: center; gap: 30px; border-bottom: 2px solid var(--soft-pink); position: sticky; top: 0; z-index: 1000; }
+        .main-nav a { text-decoration: none; color: var(--hot-pink); font-family: 'Fredoka'; font-weight: 600; }
+        .container { max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        .card { background: white; border-radius: 50px; padding: 40px; box-shadow: 0 20px 60px rgba(105,138,232,0.12); border: 1px solid rgba(105,138,232,0.3); }
+        h3 { font-family: 'Fredoka'; color: var(--hot-pink); text-align: center; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 15px; border: 2px solid var(--soft-pink); font-family: 'Quicksand'; font-weight: bold; box-sizing: border-box; }
+        .summary-box { background: var(--soft-pink); padding: 20px; border-radius: 20px; margin-bottom: 20px; color: var(--hot-pink); text-align: center; min-height: 50px; }
+        .btn-group { display: flex; gap: 10px; flex-direction: column; }
+        .btn-submit { background-color: var(--hot-pink); color: white; width: 100%; padding: 20px; border-radius: 20px; border: none; font-family: 'Fredoka'; font-size: 1.3rem; cursor: pointer; }
+        .btn-again { background-color: var(--mid-pink); color: white; width: 100%; padding: 15px; border-radius: 20px; border: none; font-family: 'Fredoka'; font-size: 1.1rem; cursor: pointer; text-decoration: none; text-align: center; display: block; }
+        
+        #thank-you-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.95); z-index: 2000; justify-content: center; align-items: center; text-align: center; }
+        .thank-you-content { background: white; padding: 50px; border-radius: 50px; border: 3px solid var(--mid-pink); box-shadow: 0 20px 50px rgba(105,138,232,0.2); }
+
+        .main-footer { background: white; padding: 30px; text-align: center; border-top: 2px solid var(--soft-pink); margin-top: 40px; }
+        .footer-text { color: var(--hot-pink); font-family: 'Fredoka'; font-size: 1rem; margin: 5px 0; }
+
+        @media (max-width: 600px) {
+            .main-nav { gap: 15px; padding: 15px 10px; }
+            .main-nav a { font-size: 0.9rem; }
+            .container { margin: 20px auto; }
+            .card { padding: 25px; border-radius: 35px; }
+            .btn-submit { font-size: 1.1rem; padding: 15px; }
+            .thank-you-content { padding: 30px; margin: 20px; border-radius: 35px; }
+            .thank-you-content h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="thank-you-overlay">
+        <div class="thank-you-content">
+            <h2 style="font-family:'Fredoka'; color:var(--hot-pink); font-size: 2.5rem;">Thank You! 🌸</h2>
+            <p style="font-weight:bold; color:#5a5a5a;">Your order has been sent to the Chef.</p>
+            <p> Please go check your order in the queue</p>
+            <p>Please wait while we redirect you to Home...</p>
+        </div>
+    </div>
+
+    <div class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Order</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Complete Your Order</h3>
+            <div class="summary-box" id="order-summary">Loading items...</div>
+            <input type="text" id="roblox_user" placeholder="Roblox Username">
+            <input type="text" id="discord_user" placeholder="Discord Username">
+            <textarea id="request" placeholder="Special Request..."></textarea>
+            <div style="font-family:'Fredoka'; font-size:1.5rem; text-align:center; color:var(--hot-pink); margin-bottom:15px;">
+                Total to Pay: $<span id="final-total">0</span>
+            </div>
+            <div class="btn-group">
+                <button class="btn-submit" onclick="submitToChef()">Submit Order</button>
+                <a href="menu.html" class="btn-again">Add More Items? (Order Again)</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p class="footer-text">© 2026 Amour Angélique Bakery. All Rights Reserved.</p>
+        <p class="footer-text" style="font-size: 0.8rem; color: #5a5a5a;">Owned & Created By fvxie.</p>
+    </footer>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1461728759294984224/1g65XVqz5cWQaoqrBim2myWrY-60ir4WonV8aEcD3Tftj6Bu8u9rVq6itNlb-6MTwwT9";
+        
+        let cart = JSON.parse(localStorage.getItem('lush_cart')) || [];
+
+        function showSummary() {
+            const summary = document.getElementById('order-summary');
+            const totalDisplay = document.getElementById('final-total');
+
+            if(!cart || cart.length === 0) { 
+                summary.innerHTML = "Your cart is empty! Visit the Menu to add items."; 
+                totalDisplay.innerText = "0";
+                return; 
+            }
+            
+            let text = "<b>Items ordered:</b><br>";
+            let finalSum = 0;
+
+            cart.forEach(item => {
+                let price = Number(item.price) || 0;
+                let qty = Number(item.qty) || 1;
+                let subtotal = price * qty;
+                
+                text += `• ${item.name} x${qty} ($${subtotal})<br>`; 
+                finalSum += subtotal; 
+            });
+            
+            summary.innerHTML = text;
+            totalDisplay.innerText = finalSum;
+        }
+
+        async function submitToChef() {
+            const roblox = document.getElementById('roblox_user').value.trim();
+            const discord = document.getElementById('discord_user').value.trim();
+            const specialRequest = document.getElementById('request').value || "None";
+            const totalBill = document.getElementById('final-total').innerText;
+            
+            if(!roblox || !discord) return alert("Please fill in both usernames!");
+            if(cart.length === 0) return alert("Your cart is empty!");
+            
+            const itemString = cart.map(item => `• ${item.name} x${item.qty}`).join("\n");
+            
+            const roleMentions = "<@&1458996741390074042>";
+
+            const payload = { 
+                content: `🔔 **New Order Alert!** ${roleMentions}`,
+                embeds: [{ 
+                    title: "💙 NEW KITCHEN TICKET", 
+                    color: 6916840, 
+                    fields: [
+                        { name: "Roblox User", value: `**${roblox}**`, inline: true },
+                        { name: "Discord User", value: `**${discord}**`, inline: true },
+                        { name: "Total Bill", value: `**$${totalBill}**`, inline: false },
+                        { name: "Order Details", value: itemString },
+                        { name: "Special Requests", value: specialRequest }
+                    ], 
+                    timestamp: new Date() 
+                }]
+            };
+
+            try {
+                const res = await fetch(WEBHOOK, { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'}, 
+                    body: JSON.stringify(payload) 
+                });
+                
+                if(res.ok) {
+                    let orderHistory = JSON.parse(localStorage.getItem('order_list')) || [];
+                    orderHistory.push({
+                        roblox: roblox,
+                        items: itemString,
+                        total: totalBill,
+                        status: "Pending",
+                        time: new Date().toLocaleTimeString()
+                    });
+                    localStorage.setItem('order_list', JSON.stringify(orderHistory));
+
+                    document.getElementById('thank-you-overlay').style.display = 'flex';
+                    localStorage.removeItem('lush_cart');
+                    // Reduced delay to 1.5 seconds for faster experience
+                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
+                } else {
+                    alert("Webhook error.");
+                }
+            } catch (e) { 
+                alert("Connection error."); 
+            }
+        }
+        
+        showSummary();
+    </script>
+</body>
+</html>

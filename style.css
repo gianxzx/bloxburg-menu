@@ -1,0 +1,279 @@
+/* --- 1. FONTS & ROOT VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap');
+
+:root {
+    --hot-pink: #ff8da1;
+    --mid-pink: #ffb6c1;
+    --soft-pink: #fdf0f1;
+    --white: #ffffff;
+    --text: #5a5a5a;
+    --success: #77dd77;
+}
+
+/* --- 2. GLOBAL STYLING --- */
+body { 
+    margin: 0; 
+    font-family: 'Quicksand', sans-serif; 
+    color: var(--text);
+    background-color: var(--white);
+    /* Soft Polka Dot Texture */
+    background-image: radial-gradient(var(--mid-pink) 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+}
+
+.top-banner { 
+    background-color: var(--mid-pink); 
+    height: 40px; 
+    width: 100%; 
+}
+
+nav { 
+    padding: 40px 20px; 
+    text-align: center; 
+    background: white; 
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.logo { 
+    font-family: 'Fredoka', sans-serif; 
+    font-size: 3rem; 
+    color: var(--mid-pink); 
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 0px var(--soft-pink);
+}
+
+/* --- 3. LAYOUT & CARDS --- */
+.hero-section {
+    background-color: rgba(253, 240, 241, 0.8);
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.card { 
+    background: white; 
+    border-radius: 50px; 
+    padding: 40px; 
+    box-shadow: 0 20px 60px rgba(255, 141, 161, 0.12);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+.menu-side { flex: 2; min-width: 350px; }
+.cart-side { flex: 1; min-width: 320px; height: fit-content; position: sticky; top: 20px; }
+
+h2, h3 { 
+    font-family: 'Fredoka', sans-serif; 
+    color: var(--hot-pink); 
+    margin-top: 0;
+}
+
+/* --- 4. ACCORDION MENU --- */
+.major-option {
+    background: var(--soft-pink);
+    margin-bottom: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid var(--mid-pink);
+    transition: all 0.3s ease;
+}
+
+.major-header {
+    padding: 22px;
+    cursor: pointer;
+    font-family: 'Fredoka';
+    font-size: 1.4rem;
+    color: var(--hot-pink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.major-header:hover { background: #fae1e4; }
+
+.major-content {
+    display: none; /* Controlled by JS */
+    padding: 0 25px 25px 25px;
+    background: white;
+    border-top: 1px solid var(--soft-pink);
+}
+
+/* --- 5. MENU ITEMS & CATEGORIES --- */
+.sub-category-title {
+    font-weight: 800;
+    font-size: 0.75rem;
+    color: var(--hot-pink);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 25px 0 10px 0;
+    display: block;
+    border-left: 4px solid var(--mid-pink);
+    padding-left: 10px;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed var(--soft-pink);
+}
+
+.item-info { font-weight: 700; font-size: 1rem; }
+
+.btn-add {
+    background-color: var(--mid-pink);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 12px;
+    font-family: 'Fredoka', sans-serif;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-add:hover { 
+    background-color: var(--hot-pink); 
+    transform: translateY(-2px); 
+}
+
+/* --- 6. PULSING EFFECT --- */
+.coming-soon {
+    color: var(--mid-pink);
+    font-family: 'Fredoka';
+    font-style: italic;
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2rem;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 0px var(--white); opacity: 0.6; }
+    50% { text-shadow: 0 0 15px var(--mid-pink); opacity: 1; }
+    100% { text-shadow: 0 0 0px var(--white); opacity: 0.6; }
+}
+
+/* --- 7. CART & INPUTS --- */
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    border: 2px solid var(--soft-pink);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.cart-bubble {
+    background: var(--soft-pink);
+    padding: 12px 18px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--hot-pink);
+    font-weight: 800;
+}
+
+.total-row {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.8rem;
+    color: var(--hot-pink);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 3px solid var(--soft-pink);
+}
+
+.btn-submit {
+    background-color: var(--hot-pink);
+    color: white;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #ff6b81;
+}
+
+/* --- 8. SUCCESS MESSAGE --- */
+#order-again-area {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f0fff4;
+    border-radius: 25px;
+    border: 2px dashed var(--success);
+}
+
+.carousel {
+  margin: 100px; auto;
+  width: 90%;
+  border: 5px;solid red;
+  display: flex;
+  overflow-x: auto;
+}
+.carousel::-webkit-scrollbar {
+  display: none;
+  
+}
+.group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  animation: spin 5s infinite linear;
+  padding-right: 1em;
+}
+
+.card {
+  flex: 0 0 5em;
+  height: 5em;
+  padding: 1em;
+  background: cornflowerblue;
+  font-size: 3rem;
+  border-radius: .2em;
+  text-align: center;
+  align-content: center;
+}
+@keyframes spin {
+  from {translate: 0;}
+  to {translate: -100%}
+}
+
+
+        /* EXTRA STYLE FOR THE THANK YOU BOX */
+        .loading-dots {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Amour Angélique Bakery</title>
+    <link rel="icon" type="image/png" href="https://cur.cursors-4u.net/food/foo-1/foo3.png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --hot-pink: #698ae8; --mid-pink: #698ae8; --soft-pink: #f0f5ff; --white: #ffffff; }
+        body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: var(--white); background-image: radial-gradient(var(--mid-pink) 0.5px, transparent 0.5px); background-size: 30px 30px; display: flex; flex-direction: column; min-height: 100vh; }
+        .main-nav { background: white; padding: 20px; display: flex; justify-content: center; gap: 30px; border-bottom: 2px solid var(--soft-pink); position: sticky; top: 0; z-index: 1000; }
+        .main-nav a { text-decoration: none; color: var(--hot-pink); font-family: 'Fredoka'; font-weight: 600; font-size: 1.2rem; }
+        .container { max-width: 600px; margin: 40px auto; padding: 0 20px; flex: 1; }
+        .card { background: white; border-radius: 50px; padding: 40px; box-shadow: 0 20px 60px rgba(105,138,232,0.12); border: 1px solid rgba(105,138,232,0.3); text-align: center; }
+        h2 { font-family: 'Fredoka'; color: var(--hot-pink); margin-bottom: 20px; }
+        
+        /* DISCORD BOX STYLE */
+        .discord-contact { background: var(--soft-pink); padding: 25px; border-radius: 30px; border: 2px dashed var(--mid-pink); margin-top: 20px; }
+        .discord-name { font-family: 'Fredoka'; font-size: 1.8rem; color: #333; margin: 15px 0; }
+        .discord-tag { color: var(--hot-pink); font-weight: bold; font-size: 1.1rem; display: block; margin-bottom: 15px; }
+        
+        /* MADE IMAGE MUCH LARGER */
+        .discord-icon { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--mid-pink); object-fit: cover; box-shadow: 0 10px 20px rgba(105,138,232,0.2); }
+
+        .community-btn { display: inline-block; background-color: var(--hot-pink); color: white; text-decoration: none; padding: 15px 30px; border-radius: 20px; font-family: 'Fredoka'; font-weight: 600; margin-top: 10px; transition: transform 0.2s; }
+        .community-btn:hover { transform: scale(1.05); }
+
+        .main-footer { background: white; padding: 30px; text-align: center; border-top: 2px solid var(--soft-pink); margin-top: 40px; }
+        .footer-text { color: var(--hot-pink); font-family: 'Fredoka'; font-size: 1rem; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Order</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Connect With Me 🌸</h2>
+            <p>Have questions about your order? Reach out on Discord!</p>
+            
+            <div class="discord-contact">
+                <img src="Screenshot_20260101_182835_com.discord_edit_70903553304805.jpg" class="discord-icon" alt="fvxie profile">
+                
+                <p class="discord-name">fvxie</p>
+                <span class="discord-tag">@fl4werrisxy</span>
+
+                <a href="https://discord.gg/vugEaJZKg2" class="community-btn">Join Our Community 🤝</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p class="footer-text">© 2026 Amour Angélique Bakery. All Rights Reserved.</p>
+        <p class="footer-text" style="font-size: 0.8rem; color: #5a5a5a;">Owned & Created By fvxie.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.includes('.html')) {
+                link.setAttribute('href', href + '?v=' + Date.now());
+            }
+        });
+    </script>
+</body>
+</html>

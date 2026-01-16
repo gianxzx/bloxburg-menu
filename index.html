@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Amour Angélique Bakery</title>
+    <link rel="icon" type="image/png" href="https://cur.cursors-4u.net/food/foo-1/foo3.png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --hot-pink: #698ae8; --mid-pink: #698ae8; --soft-pink: #f0f5ff; --white: #ffffff; }
+        body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: var(--white); background-image: radial-gradient(var(--mid-pink) 0.5px, transparent 0.5px); background-size: 30px 30px; display: flex; flex-direction: column; min-height: 100vh; }
+        .main-nav { background: white; padding: 20px; display: flex; justify-content: center; gap: 30px; border-bottom: 2px solid var(--soft-pink); position: sticky; top: 0; z-index: 1000; }
+        .main-nav a { text-decoration: none; color: var(--hot-pink); font-family: 'Fredoka'; font-weight: 600; font-size: 1.2rem; }
+        .business-card { max-width: 800px; margin: 60px auto; background: white; padding: 40px; border-radius: 50px; border: 2px solid var(--soft-pink); text-align: center; box-shadow: 0 20px 60px rgba(105, 138, 232, 0.1); flex: 1; }
+        .logo-big { font-family: 'Fredoka'; font-size: 3.5rem; color: var(--mid-pink); text-shadow: 2px 2px 0px var(--soft-pink); margin-bottom: 10px; }
+        .description { line-height: 1.8; font-size: 1.1rem; color: #5a5a5a; padding: 0 20px; margin-bottom: 30px; }
+        .about-us-box { margin-top: 30px; padding: 20px; border-radius: 30px; background: #fafdff; border: 1px dashed var(--mid-pink); }
+        .about-us-box h2 { font-family: 'Fredoka'; color: var(--hot-pink); margin-top: 0; }
+        .info-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
+        .info-box { background: var(--soft-pink); padding: 20px; border-radius: 30px; border: 1px solid var(--mid-pink); }
+        .info-box h3 { font-family: 'Fredoka'; color: var(--hot-pink); margin-top: 0; font-size: 1.2rem; }
+        .info-box p { margin: 5px 0; font-weight: 700; color: #5a5a5a; font-size: 0.9rem; }
+        .price-tag { color: var(--hot-pink); font-family: 'Fredoka'; font-weight: bold; }
+        
+        /* FOOTER STYLE */
+        .main-footer { background: white; padding: 30px; text-align: center; border-top: 2px solid var(--soft-pink); margin-top: 40px; }
+        .footer-text { color: var(--hot-pink); font-family: 'Fredoka'; font-size: 1rem; margin: 5px 0; }
+
+        /* --- NEW INFINITE SCROLL CSS --- */
+        .carousel {
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            background: white;
+            padding: 20px 0;
+            border-top: 2px solid var(--soft-pink);
+            border-bottom: 2px solid var(--soft-pink);
+            margin-top: 20px; 
+        }
+
+        .group {
+            display: flex;
+            gap: 20px;
+            padding-right: 20px;
+            animation: scroll 15s linear infinite;
+        }
+
+        .carousel-card {
+            width: 250px;
+            height: 250px;
+            background: var(--soft-pink);
+            border-radius: 30px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--mid-pink);
+        }
+
+        .carousel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        .carousel:hover .group {
+            animation-play-state: paused;
+        }
+
+        /* ADDITIONAL CODE FOR MOBILE COMPATIBILITY */
+        @media (max-width: 600px) {
+            .main-nav { gap: 15px; padding: 15px 10px; }
+            .main-nav a { font-size: 0.9rem; }
+            .business-card { margin: 20px 15px; padding: 25px 15px; border-radius: 35px; }
+            .logo-big { font-size: 2.2rem; }
+            .info-grid { grid-template-columns: 1fr; } 
+            .carousel-card { width: 180px; height: 180px; border-radius: 20px; }
+            .description { font-size: 1rem; padding: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="order.html">Order</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="business-card">
+        <div class="logo-big">✨ Amour Angélique Bakery ✨</div>
+
+        <p class="description">
+            Welcome to Amour Angélique Bakery — a sweet little haven where soft blue dreams rise fresh from the oven. 
+            Every treat is baked with love, warmth, and a touch of delicate charm. 🍰🌸
+        </p>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>Our Prices 🎀</h3>
+                <p>Prices and menu items will be listed here soon!</p>
+            </div>
+        </div>
+
+        <div class="about-us-box">
+            <h2>About Us 🎀</h2>
+            <p class="description">
+                Amour Angélique Bakery is a cozy bakery and café serving freshly baked treats and comforting meals. 
+                Every dish is made with care, soft flavors, and charming details to create warm, happy moments. 
+                Simple, elegant, and always made with love. 🍰🍽️💕
+            </p>
+        </div>
+
+        <div class="carousel">
+            <div class="group">
+                <div class="carousel-card"><img src="27a25578314099759e7c1710b71a41f9.jpg" alt="1"></div>
+                <div class="carousel-card"><img src="aa0aaa82badeae25323070fe766c7e7c.jpg" alt="2"></div>
+                <div class="carousel-card"><img src="b5e84172517ff93fce1222b4c961b099.jpg" alt="3"></div>
+                <div class="carousel-card"><img src="f78fceaef9faed732dc16efc275cf500.jpg" alt="4"></div>
+            </div>
+            <div aria-hidden="true" class="group">
+                <div class="carousel-card"><img src="27a25578314099759e7c1710b71a41f9.jpg" alt="1"></div>
+                <div class="carousel-card"><img src="aa0aaa82badeae25323070fe766c7e7c.jpg" alt="2"></div>
+                <div class="carousel-card"><img src="b5e84172517ff93fce1222b4c961b099.jpg" alt="3"></div>
+                <div class="carousel-card"><img src="f78fceaef9faed732dc16efc275cf500.jpg" alt="4"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p class="footer-text">© 2026 Amour Angélique Bakery. All Rights Reserved.</p>
+        <p class="footer-text" style="font-size: 0.8rem; color: #5a5a5a;">Owned & Created By fvxie.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.main-nav a').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.includes('.html')) {
+                link.setAttribute('href', href + '?v=' + Date.now());
+            }
+        });
+    </script>
+</body>
+</html>
