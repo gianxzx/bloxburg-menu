@@ -1,17 +1,4 @@
 /**
- * PUBLIC ACCESS CHECK
- * Checks if the admin has set the status to "closed"
- */
-if (localStorage.getItem('bakery_status') === 'closed') {
-    document.addEventListener("DOMContentLoaded", () => {
-        document.body.innerHTML = `
-            <div style="height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:#f0f5ff; font-family:'Fredoka',sans-serif; text-align:center;">
-                <h1 style="color:#698ae8; font-size:3rem;">🌸 Shop is Closed</h1>
-                <p style="color:#555; font-size:1.2rem;">We are currently not accepting orders. Please check back later!</p>
-            </div>`;
-    });
-} 
-/**
  * LUSH PINK OVEN - MASTER SCRIPT
  * Features: Accordion Menus, Quantity Grouping, UI Resets
  */
