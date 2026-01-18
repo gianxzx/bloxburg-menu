@@ -52,42 +52,6 @@
         }
 
         updateUI();
-        // --- RENDER API CONFIG ---
-const RENDER_API_KEY = "rnd_Ddq79P1p7r1HYoo42EdtvzKQjVNv"; // Get from Account Settings
-const SERVICE_ID = "srv-d5m81qkoud1c7396aa10";         // Get from Site Dashboard URL
-
-/**
- * HARD LOCK: Suspends/Resumes the Render Service
- */
-async function syncWithRender(isClosed) {
-    const action = isClosed ? 'suspend' : 'resume';
-    try {
-        await fetch(`https://api.render.com/v1/services/${SERVICE_ID}/${action}`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${RENDER_API_KEY}`,
-                'Accept': 'application/json'
-            }
-        });
-        console.log("Render Public Status: " + action);
-    } catch (e) {
-        console.error("Failed to sync with Render.");
-    }
-}
-
-// UPDATE YOUR TOGGLE FUNCTION TO TRIGGER THE LOCK
-const oldToggleShop = window.toggleShop;
-window.toggleShop = function() {
-    // Run your original logic
-    const currentStatus = localStorage.getItem('bakery_status');
-    const newStatus = (currentStatus === 'closed') ? 'open' : 'closed';
-    localStorage.setItem('bakery_status', newStatus);
-    
-    // Run the new Render Public Lock
-    syncWithRender(newStatus === 'closed');
-    
-    updateUI();
-};
 
     </script>
 </body>
