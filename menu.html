@@ -35,6 +35,9 @@
 
         .main-footer { background: white; padding: 30px; text-align: center; border-top: 2px solid var(--soft-pink); margin-top: 40px; }
         .footer-text { color: var(--hot-pink); font-family: 'Fredoka'; font-size: 1rem; margin: 5px 0; }
+
+        /* New Seasonal Section Styling */
+        .season-divider { background: #eef2ff; padding: 10px; text-align: center; font-family: 'Fredoka'; color: #698ae8; font-weight: bold; border-top: 2px solid #698ae8; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -207,6 +210,8 @@
             <div class="major-option">
                 <div class="major-header" onclick="toggleCategory('seasonal')">Seasonal <span>▼</span></div>
                 <div class="major-content" id="seasonal">
+                    
+                    <div class="season-divider">🎃 Halloween Season 🎃</div>
                     <div class="sub-category-box">
                         <div class="sub-category-header" onclick="toggleSub('halloween-fp')">Halloween Full Plates ($900) <span>▼</span></div>
                         <div class="sub-category-content" id="halloween-fp">
@@ -246,6 +251,7 @@
                         </div>
                     </div>
 
+                    <div class="season-divider">🎄 Christmas Season 🎄</div>
                     <div class="sub-category-box">
                         <div class="sub-category-header" onclick="toggleSub('christmas-fp')">Christmas Full Plates ($900) <span>▼</span></div>
                         <div class="sub-category-content" id="christmas-fp">
@@ -280,6 +286,7 @@
                         </div>
                     </div>
 
+                    <div class="season-divider">💖 Valentine Season 💖</div>
                     <div class="sub-category-box">
                         <div class="sub-category-header" onclick="toggleSub('valentine-fp')">Valentine Full Plates ($900) <span>▼</span></div>
                         <div class="sub-category-content" id="valentine-fp">
@@ -495,4 +502,3 @@
     </script>
 </body>
 </html>
-
