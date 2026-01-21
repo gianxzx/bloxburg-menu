@@ -38,6 +38,7 @@
 
         /* New Seasonal Section Styling */
         .season-divider { background: #eef2ff; padding: 10px; text-align: center; font-family: 'Fredoka'; color: #698ae8; font-weight: bold; border-top: 2px solid #698ae8; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .season-sub-label { font-family: 'Fredoka'; color: var(--hot-pink); font-size: 1.1rem; margin: 15px 0 5px 0; border-bottom: 1px solid var(--soft-pink); padding-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -211,10 +212,10 @@
                 <div class="major-header" onclick="toggleCategory('seasonal')">Seasonal <span>▼</span></div>
                 <div class="major-content" id="seasonal">
                     
-                    <div class="season-divider">🎃 Halloween Season 🎃</div>
                     <div class="sub-category-box">
-                        <div class="sub-category-header" onclick="toggleSub('halloween-fp')">Halloween Full Plates ($900) <span>▼</span></div>
-                        <div class="sub-category-content" id="halloween-fp">
+                        <div class="sub-category-header" onclick="toggleSub('halloween-all')">🎃 Halloween Season 🎃 <span>▼</span></div>
+                        <div class="sub-category-content" id="halloween-all">
+                            <div class="season-sub-label">Full Plates ($900)</div>
                             <div class="item-row"><span>Pumpkin Cookies</span><button class="btn-add" onclick="addItem('Pumpkin Cookies', 900)">+ Add</button></div>
                             <div class="item-row"><span>Ghost Cookies</span><button class="btn-add" onclick="addItem('Ghost Cookies', 900)">+ Add</button></div>
                             <div class="item-row"><span>Witch Hat Cookies</span><button class="btn-add" onclick="addItem('Witch Hat Cookies', 900)">+ Add</button></div>
@@ -228,11 +229,8 @@
                             <div class="item-row"><span>Pumpkin Meat Burger</span><button class="btn-add" onclick="addItem('Pumpkin Meat Burger', 900)">+ Add</button></div>
                             <div class="item-row"><span>Pumpkin Veggie Burger</span><button class="btn-add" onclick="addItem('Pumpkin Veggie Burger', 900)">+ Add</button></div>
                             <div class="item-row"><span>Princess Pumpkin Cake</span><button class="btn-add" onclick="addItem('Princess Pumpkin Cake', 900)">+ Add</button></div>
-                        </div>
-                    </div>
-                    <div class="sub-category-box">
-                        <div class="sub-category-header" onclick="toggleSub('halloween-qm')">Halloween Quick Meals ($330) <span>▼</span></div>
-                        <div class="sub-category-content" id="halloween-qm">
+                            
+                            <div class="season-sub-label">Quick Meals ($330)</div>
                             <div class="item-row"><span>Witches’ Fearsome Frog Juice</span><button class="btn-add" onclick="addItem('Witches’ Fearsome Frog Juice', 330)">+ Add</button></div>
                             <div class="item-row"><span>Pumpkin Spice Latte</span><button class="btn-add" onclick="addItem('Pumpkin Spice Latte', 330)">+ Add</button></div>
                             <div class="item-row"><span>Spooky Vanilla Milkshake</span><button class="btn-add" onclick="addItem('Spooky Vanilla Milkshake', 330)">+ Add</button></div>
@@ -251,10 +249,10 @@
                         </div>
                     </div>
 
-                    <div class="season-divider">🎄 Christmas Season 🎄</div>
                     <div class="sub-category-box">
-                        <div class="sub-category-header" onclick="toggleSub('christmas-fp')">Christmas Full Plates ($900) <span>▼</span></div>
-                        <div class="sub-category-content" id="christmas-fp">
+                        <div class="sub-category-header" onclick="toggleSub('christmas-all')">🎄 Christmas Season 🎄 <span>▼</span></div>
+                        <div class="sub-category-content" id="christmas-all">
+                            <div class="season-sub-label">Full Plates ($900)</div>
                             <div class="item-row"><span>Holiday Cookies</span><button class="btn-add" onclick="addItem('Holiday Cookies', 900)">+ Add</button></div>
                             <div class="item-row"><span>Reindeer Pancakes</span><button class="btn-add" onclick="addItem('Reindeer Pancakes', 900)">+ Add</button></div>
                             <div class="item-row"><span>Gingerbread Cookies</span><button class="btn-add" onclick="addItem('Gingerbread Cookies', 900)">+ Add</button></div>
@@ -268,11 +266,8 @@
                             <div class="item-row"><span>Holiday Tree Brownies</span><button class="btn-add" onclick="addItem('Holiday Tree Brownies', 900)">+ Add</button></div>
                             <div class="item-row"><span>Winter Cakes</span><button class="btn-add" onclick="addItem('Winter Cakes', 900)">+ Add</button></div>
                             <div class="item-row"><span>Snowflake Cupcakes</span><button class="btn-add" onclick="addItem('Snowflake Cupcakes', 900)">+ Add</button></div>
-                        </div>
-                    </div>
-                    <div class="sub-category-box">
-                        <div class="sub-category-header" onclick="toggleSub('christmas-qm')">Christmas Quick Meals ($330) <span>▼</span></div>
-                        <div class="sub-category-content" id="christmas-qm">
+                            
+                            <div class="season-sub-label">Quick Meals ($330)</div>
                             <div class="item-row"><span>Gingerbread Latte</span><button class="btn-add" onclick="addItem('Gingerbread Latte', 330)">+ Add</button></div>
                             <div class="item-row"><span>Peppermint Mocha</span><button class="btn-add" onclick="addItem('Peppermint Mocha', 330)">+ Add</button></div>
                             <div class="item-row"><span>White Chocolate Cappuccino</span><button class="btn-add" onclick="addItem('White Chocolate Cappuccino', 330)">+ Add</button></div>
@@ -286,10 +281,10 @@
                         </div>
                     </div>
 
-                    <div class="season-divider">💖 Valentine Season 💖</div>
                     <div class="sub-category-box">
-                        <div class="sub-category-header" onclick="toggleSub('valentine-fp')">Valentine Full Plates ($900) <span>▼</span></div>
-                        <div class="sub-category-content" id="valentine-fp">
+                        <div class="sub-category-header" onclick="toggleSub('valentine-all')">💖 Valentine Season 💖 <span>▼</span></div>
+                        <div class="sub-category-content" id="valentine-all">
+                            <div class="season-sub-label">Full Plates ($900)</div>
                             <div class="item-row"><span>Heart Cookies</span><button class="btn-add" onclick="addItem('Heart Cookies', 900)">+ Add</button></div>
                             <div class="item-row"><span>Heart Cupcakes</span><button class="btn-add" onclick="addItem('Heart Cupcakes', 900)">+ Add</button></div>
                             <div class="item-row"><span>Envelope Cookies</span><button class="btn-add" onclick="addItem('Envelope Cookies', 900)">+ Add</button></div>
@@ -303,11 +298,8 @@
                             <div class="item-row"><span>Lovely Chocolate Candy Cookies</span><button class="btn-add" onclick="addItem('Lovely Chocolate Candy Cookies', 900)">+ Add</button></div>
                             <div class="item-row"><span>Heart Macarons</span><button class="btn-add" onclick="addItem('Heart Macarons', 900)">+ Add</button></div>
                             <div class="item-row"><span>Lovely Cake Pops</span><button class="btn-add" onclick="addItem('Lovely Cake Pops', 900)">+ Add</button></div>
-                        </div>
-                    </div>
-                    <div class="sub-category-box">
-                        <div class="sub-category-header" onclick="toggleSub('valentine-qm')">Valentine Quick Meals ($330) <span>▼</span></div>
-                        <div class="sub-category-content" id="valentine-qm">
+                            
+                            <div class="season-sub-label">Quick Meals ($330)</div>
                             <div class="item-row"><span>Heart Shaped Box of Chocolates</span><button class="btn-add" onclick="addItem('Heart Shaped Box of Chocolates', 330)">+ Add</button></div>
                             <div class="item-row"><span>Box of Candy Hearts</span><button class="btn-add" onclick="addItem('Box of Candy Hearts', 330)">+ Add</button></div>
                             <div class="item-row"><span>Chocolate Dipped Strawberries</span><button class="btn-add" onclick="addItem('Chocolate Dipped Strawberries', 330)">+ Add</button></div>
