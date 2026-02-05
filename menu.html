@@ -350,8 +350,7 @@
             <div style="font-family:'Fredoka'; font-size:1.5rem; text-align:right; color:var(--hot-pink); margin-top:10px;">
                 Total: $<span id="total-price">0</span>
             </div>
-            <a href="javascript:void(0)" id="order-btn-main" onclick="validateOrder()" class="btn-order-now">Order Now?</a>
-        </div>
+            </div>
     </div>
 
 <footer class="main-footer">
@@ -426,16 +425,7 @@
             update();
         }
 
-        function validateOrder() {
-            let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-            if (totalQty < 10) {
-                alert("Minimum order is 10 plates total. Please add more items.");
-            } else if (totalQty > 40) {
-                alert("Maximum order is 40 plates total. Please remove some items.");
-            } else {
-                window.location.href = "order.html";
-            }
-        }
+        /* validateOrder function removed as requested */
 
         function update() {
             const list = document.getElementById('cart-items');
@@ -465,19 +455,10 @@
 
         function checkShopStatus() {
             const status = localStorage.getItem('bakery_status');
-            const orderBtn = document.getElementById('order-btn-main');
             const addButtons = document.querySelectorAll('.btn-add');
             const warning = document.getElementById('limit-warning');
 
             if (status === 'closed') {
-                orderBtn.innerText = "KITCHEN CLOSED";
-                orderBtn.style.backgroundColor = "#ccc";
-                orderBtn.style.cursor = "not-allowed";
-                orderBtn.onclick = function(e) { 
-                    e.preventDefault(); 
-                    alert("The bakery is currently closed! Please check back later."); 
-                };
-
                 addButtons.forEach(btn => {
                     btn.style.backgroundColor = "#ccc";
                     btn.style.cursor = "not-allowed";
@@ -487,12 +468,6 @@
                 warning.innerText = "⚠️ We are currently not taking orders.";
                 warning.style.color = "red";
             } else {
-                // Re-enable if open
-                orderBtn.innerText = "Order Now?";
-                orderBtn.style.backgroundColor = "var(--hot-pink)";
-                orderBtn.style.cursor = "pointer";
-                orderBtn.onclick = validateOrder;
-                
                 addButtons.forEach(btn => {
                     btn.style.backgroundColor = "var(--mid-pink)";
                     btn.style.cursor = "pointer";
@@ -518,3 +493,5 @@
     </script>
 </body>
 </html>
+
+
