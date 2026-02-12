@@ -78,6 +78,10 @@
 
     <script>
         const WEBHOOK = "https://discord.com/api/webhooks/1461728759294984224/1g65XVqz5cWQaoqrBim2myWrY-60ir4WonV8aEcD3Tftj6Bu8u9rVq6itNlb-6MTwwT9";
+        // ADDED: BotGhost Webhook URL
+        const BOTGHOST_WEBHOOK = "https://api.botghost.com/webhook/1470303510523412493/ga92j5ax1q87woj0us0rr7";
+        // NOTE: Replace 'YOUR_API_KEY' with your actual BotGhost API Key from settings
+        const BOTGHOST_API_KEY = "c6bc22dc6aab67484180547e7f959308acfd1a1065cbeaaa0ad706ea1ed4503a"; 
         
         let cart = JSON.parse(localStorage.getItem('lush_cart')) || [];
 
@@ -120,6 +124,7 @@
             
             const roleMentions = "<@&1458996741390074042>";
 
+            // Standard Discord Webhook Payload
             const payload = { 
                 content: `🔔 **New Order Alert!** ${roleMentions}`,
                 embeds: [{ 
@@ -136,11 +141,33 @@
                 }]
             };
 
+            // ADDED: BotGhost Specific Payload
+            const botghostPayload = {
+                variables: [
+                    { name: "roblox_user", value: roblox },
+                    { name: "discord_user", value: discord },
+                    { name: "order_details", value: itemString },
+                    { name: "total", value: totalBill },
+                    { name: "notes", value: specialRequest }
+                ]
+            };
+
             try {
+                // Send to Standard Discord Webhook
                 const res = await fetch(WEBHOOK, { 
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
                     body: JSON.stringify(payload) 
+                });
+
+                // ADDED: Send to BotGhost Webhook
+                await fetch(BOTGHOST_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': BOTGHOST_API_KEY
+                    },
+                    body: JSON.stringify(botghostPayload)
                 });
                 
                 if(res.ok) {
@@ -156,7 +183,6 @@
 
                     document.getElementById('thank-you-overlay').style.display = 'flex';
                     localStorage.removeItem('lush_cart');
-                    // Reduced delay to 1.5 seconds for faster experience
                     setTimeout(() => { window.location.href = "index.html"; }, 1500);
                 } else {
                     alert("Webhook error.");
@@ -170,4 +196,3 @@
     </script>
 </body>
 </html>
- 
